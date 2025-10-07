@@ -140,9 +140,9 @@ module ripple_counter_func_tb;
 endmodule
 ```
 
-# Output Waveform 
-
+# Output Waveform
 <img width="1920" height="1200" alt="Screenshot 2025-10-03 114715" src="https://github.com/user-attachments/assets/dc455a76-2209-4e2c-a35c-5512c95d7a0d" />
+
 
 
 # Conclusion
