@@ -141,8 +141,7 @@ endmodule
 ```
 
 # Output Waveform
-<img width="1920" height="1200" alt="Screenshot 2025-10-03 114715" src="https://github.com/user-attachments/assets/dc455a76-2209-4e2c-a35c-5512c95d7a0d" />
-
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/19e508f1-24f4-433b-bc8d-9d6e4d44ded7" />
 
 
 # Conclusion
