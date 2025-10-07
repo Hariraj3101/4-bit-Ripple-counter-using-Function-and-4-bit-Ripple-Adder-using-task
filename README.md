@@ -23,36 +23,34 @@ Capture screenshots of the waveform and save the simulation logs. These will be 
 
 # Verilog Code
 # 4 bit Ripple Adder using Task
-```
 // 4-bit Ripple Carry Adder using Task
-module ripple_adder_task (
-    input [3:0] A, B,
-    input Cin,
-    output reg [3:0] Sum,
-    output reg Cout
+```
+module ripple (
+input [3:0] A, B,
+input Cin,
+output reg [3:0] Sum,
+output reg Cout
 );
-    reg c;
-    integer i;
+reg c;
+integer i;
+task full_adder;
+input a, b, cin;
+output s, cout;
+begin
+s = a ^ b ^ cin;
+ cout = (a & b) | (b & cin) | (a & cin);
+ end
+endtask
 
-    task full_adder;
-        input a, b, cin;
-        output s, cout;
-        begin
-        ///
-        end
-    endtask
-
-    always @(*) 
-    begin
-        c = Cin;
-        for (i = 0; i < 4; i = i + 1) begin
-            full_adder(A[i], B[i], c, Sum[i], c);
-        end
-        Cout = c;
-    end
+always @(*) begin
+c = Cin;
+for (i = 0; i < 4; i = i + 1) begin
+full_adder(A[i], B[i], c, Sum[i], c);
+end
+Cout = c;
+end
 endmodule
-
-
+```
 # Test Bench
 ```
 module ripple_tb;
@@ -96,27 +94,32 @@ endmodule
 ```
 # Output Waveform
 <img width="1920" height="1200" alt="Screenshot 2025-10-03 113359" src="https://github.com/user-attachments/assets/a288f218-509c-4434-b35d-774e9e925484" />
-# 4 bit Ripple counter using Function
-```
-// 4-bit Ripple Counter using Function
 
+
+# 4 bit Ripple counter using Function
+// 4-bit Ripple Counter using Function
+```
 module ripple_counter_func (
     input clk, rst,
     output reg [3:0] Q
 );
 
     function [3:0] count;
-     ///
+        input [3:0] val;
+        begin
+            count = val + 1;
+        end
     endfunction
 
     always @(posedge clk or posedge rst) begin
         if (rst)
             Q <= 4'b0000;
         else
-            Q <= count(Q);  // use function to increment
+            Q <= count(Q);
     end
 endmodule
 ```
+
 # Test Bench
 ```
 module ripple_counter_func_tb;
@@ -142,8 +145,9 @@ module ripple_counter_func_tb;
 endmodule
 ```
 
-# Output Waveform
-<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/19e508f1-24f4-433b-bc8d-9d6e4d44ded7" />
+
+# Output Waveform 
+<img width="1920" height="1200" alt="Screenshot 2025-10-03 114715" src="https://github.com/user-attachments/assets/dc455a76-2209-4e2c-a35c-5512c95d7a0d" />
 
 
 # Conclusion
